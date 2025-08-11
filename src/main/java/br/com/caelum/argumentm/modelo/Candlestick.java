@@ -3,6 +3,7 @@ package br.com.caelum.argumentm.modelo;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import br.com.caelumn.argumentm.utils.Util;
 
 public final class Candlestick {
 	
@@ -17,10 +18,13 @@ public final class Candlestick {
 		super();
 		this.abertura = abertura;
 		this.fechamento = fechamento;
+		if(minimo.compareTo(maximo) > 0) {
+			throw new IllegalArgumentException("Preço minimo não pode ser maior que preço maximo");
+		}
 		this.minimo = minimo;
 		this.maximo = maximo;
 		this.volume = volume;
-		this.data = data;
+		this.data = Util.verificaDataNula(data);
 	}
 	
 	public BigDecimal getAbertura() {
@@ -44,7 +48,7 @@ public final class Candlestick {
 	}
 
 	public Calendar getData() {
-		return data;
+		return (Calendar) this.data.clone();
 	}
 	
 	public boolean isAlta() {

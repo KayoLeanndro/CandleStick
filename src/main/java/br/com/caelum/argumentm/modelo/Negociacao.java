@@ -3,16 +3,17 @@ package br.com.caelum.argumentm.modelo;
 import java.math.BigDecimal;
 import java.util.Calendar;
 
+import br.com.caelumn.argumentm.utils.Util;
+
 public final class Negociacao {
 	private final BigDecimal preco;
 	private final int quantidade;
 	private final Calendar data;
 	
 	public Negociacao(BigDecimal preco, int quantidade, Calendar data) {
-		super();
 		this.preco = preco;
 		this.quantidade = quantidade;
-		this.data = data;
+		this.data = Util.verificaDataNula(data);
 	}
 
 	public BigDecimal getPreco() {
@@ -23,8 +24,10 @@ public final class Negociacao {
 		return quantidade;
 	}
 
+	//Retorna uma copia nova do objeto Calendar
+	//Evitando multabilidade fora da classe
 	public Calendar getData() {
-		return data;
+		return (Calendar)this.data.clone();
 	}
 	
 	//Volume de dinheiro transferido por negociacao
