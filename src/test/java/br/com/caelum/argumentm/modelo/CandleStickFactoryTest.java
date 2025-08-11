@@ -67,4 +67,8 @@ public class CandleStickFactoryTest {
 		Assert.assertEquals(BigDecimal.valueOf(0), candle.getMaximo());
 		Assert.assertEquals(BigDecimal.valueOf(0), candle.getVolume());
 	}
+	
+	
+	
+	
 }
