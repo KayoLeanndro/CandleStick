@@ -1,5 +1,7 @@
 package br.com.caelum.argumentm.modelo;
 
+import static org.junit.Assert.assertEquals;
+
 import java.math.BigDecimal;
 import java.util.Calendar;
 
@@ -28,4 +30,28 @@ public class NegociacaoTest {
 		
 	}
 	
+	 @Test(expected = NullPointerException.class)
+	    public void deveLancarExcecaoQuandoPrecoForNulo() {
+	        new Negociacao(null, 10, Calendar.getInstance());
+	    }
+
+	    @Test(expected = NullPointerException.class)
+	    public void deveLancarExcecaoQuandoDataForNula() {
+	        new Negociacao(new BigDecimal("10.0"), 10, null);
+	    }
+
+	    @Test
+	    public void deveCriarNegociacaoComParametrosValidos() {
+	        BigDecimal preco = new BigDecimal("10.0");
+	        int quantidade = 10;
+	        Calendar data = Calendar.getInstance();
+
+	        Negociacao negociacao = new Negociacao(preco, quantidade, data);
+
+	        assertEquals(preco, negociacao.getPreco());
+	        assertEquals(quantidade, negociacao.getQuantidade());
+	        assertEquals(data, negociacao.getData());
+	    }
+	
+		
 }
