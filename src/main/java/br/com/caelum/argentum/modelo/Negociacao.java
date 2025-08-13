@@ -1,10 +1,10 @@
-package br.com.caelum.argumentm.modelo;
+package br.com.caelum.argentum.modelo;
 
 import java.math.BigDecimal;
 import java.util.Calendar;
 import java.util.Objects;
 
-import br.com.caelumn.argumentm.utils.Util;
+import br.com.caelum.argentum.utils.Util;
 
 public final class Negociacao {
 	private final BigDecimal preco;

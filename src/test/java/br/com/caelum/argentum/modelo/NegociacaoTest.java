@@ -1,4 +1,4 @@
-package br.com.caelum.argumentm.modelo;
+package br.com.caelum.argentum.modelo;
 
 import static org.junit.Assert.assertEquals;
 
@@ -6,6 +6,9 @@ import java.math.BigDecimal;
 import java.util.Calendar;
 
 import org.junit.Test;
+
+import br.com.caelum.argentum.modelo.Negociacao;
+
 import org.junit.Assert;
 
 

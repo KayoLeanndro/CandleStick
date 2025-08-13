@@ -1,4 +1,4 @@
-package br.com.caelum.argumentm.modelo;
+package br.com.caelum.argentum.modelo;
 
 import java.math.BigDecimal;
 import java.util.Calendar;

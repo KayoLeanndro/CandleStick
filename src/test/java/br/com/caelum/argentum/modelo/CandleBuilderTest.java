@@ -1,4 +1,4 @@
-package br.com.caelum.argumentm.modelo;
+package br.com.caelum.argentum.modelo;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
@@ -7,6 +7,9 @@ import java.math.BigDecimal;
 import java.util.Calendar;
 
 import org.junit.Test;
+
+import br.com.caelum.argentum.modelo.CandleBuilder;
+import br.com.caelum.argentum.modelo.Candlestick;
 
 public class CandleBuilderTest {
 

@@ -1,4 +1,4 @@
-package br.com.caelumn.argumentm.utils;
+package br.com.caelum.argentum.utils;
 
 import java.util.Calendar;
 

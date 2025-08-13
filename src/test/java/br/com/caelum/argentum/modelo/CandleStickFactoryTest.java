@@ -1,4 +1,4 @@
-package br.com.caelum.argumentm.modelo;
+package br.com.caelum.argentum.modelo;
 
 import java.math.BigDecimal;
 import java.util.Arrays;
@@ -7,6 +7,10 @@ import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Test;
+
+import br.com.caelum.argentum.modelo.CandleStickFactory;
+import br.com.caelum.argentum.modelo.Candlestick;
+import br.com.caelum.argentum.modelo.Negociacao;
 
 public class CandleStickFactoryTest {
 
