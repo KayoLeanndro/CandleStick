@@ -4,10 +4,9 @@ import static org.junit.Assert.assertEquals;
 
 import java.math.BigDecimal;
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 import org.junit.Test;
-
-import br.com.caelum.argentum.modelo.Negociacao;
 
 import org.junit.Assert;
 
@@ -26,7 +25,7 @@ public class NegociacaoTest {
 		
 	}
 	
-	@Test(expected = IllegalArgumentException.class)
+	@Test(expected = NullPointerException.class)
 	public void naoCriaNegociacaoComDataNula() {
 		
 		Negociacao n = new Negociacao(BigDecimal.valueOf(10), 5, null);
@@ -54,6 +53,45 @@ public class NegociacaoTest {
 	        assertEquals(preco, negociacao.getPreco());
 	        assertEquals(quantidade, negociacao.getQuantidade());
 	        assertEquals(data, negociacao.getData());
+	    }
+	    
+	    @Test
+	    public void mesmoMilissegundosEhDoMesmoDia() {
+	    	Calendar agora = Calendar.getInstance();
+	    	Calendar mesmoMomento = (Calendar) agora.clone();
+	    	
+	    	Negociacao negociacao = new Negociacao(new BigDecimal("40.0"), 100, agora);
+	    	Assert.assertTrue(negociacao.isMesmoDia(mesmoMomento));
+	    }
+	    
+	    @Test
+	    public void comHorariosDiferentesEhnoMesmoDia() {
+	    	//Usando GregorianCalendar(ano,mes, dia, hora, minuto)
+	    	Calendar manha = new GregorianCalendar(2011,10,20,8,30);
+	    	Calendar tarde = new GregorianCalendar(2011,10,20,15,30);
+	    	
+	    	Negociacao negociacao = new Negociacao(new BigDecimal("40.0"), 100, manha);
+	    	Assert.assertTrue(negociacao.isMesmoDia(tarde));
+	    }
+	    
+	    @Test
+	    public void mesmoDiaMasMesesDiferentesNaoSomadosDoMesmoDia() {
+	    	//Usando GregorianCalendar(ano,mes, dia)
+	    	Calendar junho = new GregorianCalendar(2010,7,20);
+	    	Calendar setembro = new GregorianCalendar(2011,7,20);
+	    	
+	    	Negociacao negociacao = new Negociacao(new BigDecimal("40.0"), 100, junho);
+	    	Assert.assertFalse(negociacao.isMesmoDia(setembro));
+	    }
+	    
+	    @Test
+	    public void mesmoDiamesmoMesesAnoDiferentesNaoSomadosDoMesmoDia() {
+	    	//Usando GregorianCalendar(ano,mes, dia)
+	    	Calendar doismileDez = new GregorianCalendar(2010,7,20);
+	    	Calendar doismileOnze = new GregorianCalendar(2011,7,20);
+	    	
+	    	Negociacao negociacao = new Negociacao(new BigDecimal("40.0"), 100, doismileDez);
+	    	Assert.assertFalse(negociacao.isMesmoDia(doismileOnze));
 	    }
 	
 		
